@@ -26,13 +26,13 @@ export class CameraComponent implements OnDestroy {
     @Output()
     pictureCaptured = new EventEmitter();
 
-    @ViewChild('video', {static: false})
+    @ViewChild('video')
     video: ElementRef;
 
-    @ViewChild('canvas', {static: false})
+    @ViewChild('canvas')
     canvas: ElementRef;
 
-    @ViewChild('nativeInput', {static: false})
+    @ViewChild('nativeInput')
     nativeInput: any;
 
     constructor(

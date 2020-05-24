@@ -8,10 +8,10 @@ import ImageUtils from 'src/app/utils/image-utils';
 })
 export class PictureGetterComponent {
 
-  @ViewChild ('video', {static: false})
+  @ViewChild('video')
   public video: ElementRef;
 
-  @ViewChild ('canvas', {static: false})
+  @ViewChild('canvas')
   public canvas: ElementRef;
 
   @Output()
