@@ -6,12 +6,16 @@
     <mat-card-content>
         <mat-vertical-stepper>
             <mat-step label="Paso 1: Prueba de vida">
-                <biometrics-liveness *ngIf="livenessSessionRunning" (sessionCompleted)="onLivenessCompleted($event.detail)" (sessionStarted)="onLivenessSessionStarted()" server-url="http://localhost:8080/" api-key="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsImNsaWVudCI6InRlc3QifQ.5SY_UQaaILYpryU0qNBuPrPTPkF79UhTCNFElXjzUyY"></biometrics-liveness>
-                <mat-label *ngIf="livenessPictures.length > 0">Prueba de vida tomada exitosamente<br></mat-label>
-                <button mat-button mat-raised-button color="primary" *ngIf="!livenessSessionRunning" (click)="startLivenessSession()">
-                    <ng-container *ngIf="livenessPictures.length === 0">Realizar prueba de vida</ng-container>
-                    <ng-container *ngIf="livenessPictures.length > 0">Volver a realizar prueba de vida</ng-container>
-                </button>
+                <div *ngIf="livenessPictures.length > 0" class="image-container">
+                    <img [src]="livenessPictures[0]">
+                </div>
+                <biometrics-liveness *ngIf="livenessSessionRunning" (sessionCompleted)="onLivenessCompleted($event.detail)" (sessionStarted)="onLivenessSessionStarted()" server-url="/biometrics/" api-key="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsImNsaWVudCI6InRlc3QifQ.5SY_UQaaILYpryU0qNBuPrPTPkF79UhTCNFElXjzUyY"></biometrics-liveness>
+                <div class="buttons-container">
+                    <button mat-button mat-raised-button color="primary" *ngIf="!livenessSessionRunning" (click)="startLivenessSession()">
+                        <ng-container *ngIf="livenessPictures.length === 0">Realizar prueba de vida</ng-container>
+                        <ng-container *ngIf="livenessPictures.length > 0">Volver a realizar prueba de vida</ng-container>
+                    </button>
+                </div>
             </mat-step>
             <mat-step label="Paso 2: Fotos del documento">
                 <div class="picture-container">

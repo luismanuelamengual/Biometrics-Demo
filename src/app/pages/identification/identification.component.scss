@@ -23,6 +23,18 @@ mat-card {
         }
     }
 
+    .image-container {
+        width: 100%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .buttons-container {
+        margin-top: 10px;
+    }
+
     .picture-container {
         margin-bottom: 10px;
         margin-top: 10px;
