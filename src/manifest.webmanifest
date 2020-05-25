@@ -1,6 +1,6 @@
 {
-    "name": "liveness-poc-web",
-    "short_name": "liveness-poc-web",
+    "name": "Biometrics",
+    "short_name": "Biometrics",
     "theme_color": "#3f51b5",
     "background_color": "#dddddd",
     "display": "standalone",
