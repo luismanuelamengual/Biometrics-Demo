@@ -24,44 +24,32 @@
                 <app-dni-picture-getter (dniCaptured)="onDniBackCaptured($event)"></app-dni-picture-getter>
             </mat-step>
             <mat-step label="Paso 4: Verificación">
-                <div *ngIf="verificationError != null || verificationResults != null" class="results-section">
+                <div *ngIf="verificationError != null || verificationResults != null || verificationDniResults != null" class="results-section">
                     <div *ngIf="verificationError != null" class="results-error">
                         {{ verificationError }}
                     </div>
-                    <ng-container *ngIf="!verifying && verificationResults != null">
-                        <mat-expansion-panel expanded=true>
+                    <ng-container *ngIf="!verifying && verificationError == null">
+                        <mat-expansion-panel *ngIf="verificationResults" expanded=true>
                             <mat-expansion-panel-header>
                                 <mat-panel-title>Resultado</mat-panel-title>
                             </mat-expansion-panel-header>
                             <div class="verification-result-item">
-                                Match:&nbsp;&nbsp;
-                                <span *ngIf="verificationResults.match" class="verification-result-success">POSITIVO</span>
-                                <span *ngIf="!verificationResults.match" class="verification-result-danger">NEGATIVO</span>
+                                <div class="verification-label">Match</div>
+                                <div *ngIf="verificationResults.data.match" class="verification-value verification-value-success">POSITIVO</div>
+                                <div *ngIf="!verificationResults.data.match" class="verification-value verification-value-danger">NEGATIVO</div>
                             </div>
-                            <div *ngIf="verificationResults.similarity" class="verification-result-item">
-                                Similaridad:&nbsp;&nbsp;
-                                <span class="verification-result-success">{{ verificationResults.similarity }}</span>
+                            <div *ngIf="verificationResults.data.similarity" class="verification-result-item">
+                                <div class="verification-label">Similaridad</div>
+                                <div class="verification-value verification-value-success">{{ verificationResults.data.similarity }}</div>
                             </div>
                         </mat-expansion-panel>
-                        <mat-expansion-panel *ngIf="verificationResults.documentData">
+                        <mat-expansion-panel *ngIf="verificationDniResults && verificationDniResults.data">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>Datos del documento</mat-panel-title>
                             </mat-expansion-panel-header>
-                            <div class="table-section">
-                                <table>
-                                    <thead>
-                                    <tr>
-                                        <th>Campo</th>
-                                        <th>Valor</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr *ngFor="let dataItem of verificationResults.documentData | keyvalue">
-                                        <td>{{ dataItem.key }}</td>
-                                        <td>{{ dataItem.value }}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                            <div *ngFor="let dataItem of verificationDniResults.data.information | keyvalue" class="verification-result-item">
+                                <div class="verification-label">{{ dataItem.key | titlecase }}</div>
+                                <div class="verification-value verification-value-success">{{ dataItem.value }}</div>
                             </div>
                         </mat-expansion-panel>
                     </ng-container>

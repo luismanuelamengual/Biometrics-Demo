@@ -53,16 +53,25 @@ mat-card {
             font-weight: bold;
             margin-bottom: 10px;
 
-            .verification-result-danger {
-                color: #bf4941;
+            .verification-label {
+                display: inline-block;
+                width: 100%;
             }
 
-            .verification-result-warning {
-                color: #b5a841;
-            }
+            .verification-value {
+                display: inline-block;
 
-            .verification-result-success {
-                color: #4f8a45
+                &.verification-value-danger {
+                    color: #bf4941;
+                }
+
+                &.verification-value-warning {
+                    color: #b5a841;
+                }
+
+                &.verification-value-success {
+                    color: #4f8a45
+                }
             }
         }
     }
