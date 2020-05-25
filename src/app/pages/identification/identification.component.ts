@@ -64,7 +64,7 @@ export class IdentificationComponent {
                 const formDataDocument = new FormData();
                 formDataDocument.append('documentFront', documentFrontBytes);
                 formDataDocument.append('documentBack', documentBackBytes);
-                this.verificationDniResults = await this.http.post(`${environment.biometricsUrl}v1/scan_document_data`, formDataDocument, {headers: { Authorization: 'Bearer ' + environment.biometricsApiKey}}).toPromise();
+                this.verificationDniResults = await this.http.post(`${environment.biometricsUrl}/v1/scan_document_data`, formDataDocument, {headers: { Authorization: 'Bearer ' + environment.biometricsApiKey}}).toPromise();
 
             } catch (e) {
                 this.verificationError = e.message;
