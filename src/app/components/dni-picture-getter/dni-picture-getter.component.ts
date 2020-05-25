@@ -2,11 +2,11 @@ import {AfterViewInit, Component, EventEmitter, Output, ViewChild} from '@angula
 import ImageUtils from 'src/app/utils/image-utils';
 
 @Component({
-    selector: 'app-picture-getter',
-    templateUrl: './picture-getter.component.html',
-    styleUrls: ['./picture-getter.component.scss']
+    selector: 'app-dni-picture-getter',
+    templateUrl: './dni-picture-getter.component.html',
+    styleUrls: ['./dni-picture-getter.component.scss']
 })
-export class PictureGetterComponent implements AfterViewInit {
+export class DniPictureGetterComponent implements AfterViewInit {
 
     @Output()
     pictureCaptured = new EventEmitter();

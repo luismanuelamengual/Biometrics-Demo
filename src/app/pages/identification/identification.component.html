@@ -20,12 +20,12 @@
             <mat-step label="Paso 2: Fotos del documento">
                 <div class="picture-container">
                     <mat-label><b>Foto del frente del documento</b></mat-label>
-                    <app-picture-getter (pictureCaptured)="onDocumentFrontCaptured($event)"></app-picture-getter>
+                    <app-dni-picture-getter (pictureCaptured)="onDocumentFrontCaptured($event)"></app-dni-picture-getter>
                 </div>
                 <mat-divider [inset]="true"></mat-divider>
                 <div class="picture-container">
                     <mat-label><b>Foto del dorso del documento</b></mat-label>
-                    <app-picture-getter (pictureCaptured)="onDocumentBackCaptured($event)"></app-picture-getter>
+                    <app-dni-picture-getter (pictureCaptured)="onDocumentBackCaptured($event)"></app-dni-picture-getter>
                 </div>
             </mat-step>
             <mat-step label="Paso 3: Verificación">
