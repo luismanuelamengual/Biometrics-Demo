@@ -9,7 +9,7 @@
                 <div *ngIf="livenessPictures.length > 0" class="image-container">
                     <img [src]="livenessPictures[0]">
                 </div>
-                <biometrics-liveness *ngIf="livenessSessionRunning" (sessionCompleted)="onLivenessCompleted($event.detail)" (sessionStarted)="onLivenessSessionStarted()" server-url="/biometrics/" api-key="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsImNsaWVudCI6InRlc3QifQ.5SY_UQaaILYpryU0qNBuPrPTPkF79UhTCNFElXjzUyY"></biometrics-liveness>
+                <biometrics-liveness *ngIf="livenessSessionRunning" (sessionCompleted)="onLivenessCompleted($event.detail)" (sessionStarted)="onLivenessSessionStarted()" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness>
                 <div class="buttons-container">
                     <button mat-button mat-raised-button color="primary" *ngIf="!livenessSessionRunning" (click)="startLivenessSession()">
                         <ng-container *ngIf="livenessPictures.length === 0">Realizar prueba de vida</ng-container>

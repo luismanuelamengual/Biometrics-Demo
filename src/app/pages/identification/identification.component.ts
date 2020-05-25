@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import ImageUtils from 'src/app/utils/image-utils';
+import {environment} from '../../../environments/environment';
 
 @Component({
     selector: 'app-identification',
@@ -9,6 +10,8 @@ import ImageUtils from 'src/app/utils/image-utils';
 })
 export class IdentificationComponent {
 
+    biometricsUrl: string;
+    biometricsApiKey: string;
     documentFrontPicture = null;
     documentBackPicture = null;
     livenessPictures = [];
@@ -18,6 +21,8 @@ export class IdentificationComponent {
     verifying = false;
 
     constructor(private http: HttpClient) {
+        this.biometricsUrl = environment.biometricsUrl;
+        this.biometricsApiKey = environment.biometricsApiKey;
     }
 
     public startLivenessSession() {
