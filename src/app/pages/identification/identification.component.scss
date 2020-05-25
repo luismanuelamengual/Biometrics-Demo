@@ -51,11 +51,12 @@ mat-card {
         .verification-result-item {
             width: 100%;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
 
             .verification-label {
                 display: inline-block;
                 width: 100%;
+                margin-bottom: 8px;
             }
 
             .verification-value {
@@ -71,6 +72,16 @@ mat-card {
 
                 &.verification-value-success {
                     color: #4f8a45
+                }
+            }
+
+            @media only screen and (min-width: 720px) {
+                .verification-label {
+                    width: 50%;
+                }
+
+                .verification-value {
+                    width: 50%;
                 }
             }
         }
