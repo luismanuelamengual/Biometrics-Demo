@@ -1,5 +1,8 @@
 <div class="picture-getter">
-    <biometrics-camera #camera (pictureCaptured)="onPictureCaptured($event.detail)"></biometrics-camera>
+    <biometrics-camera #camera (pictureCaptured)="onPictureCaptured($event.detail)">
+        <div class="dni-overlay"></div>
+        <div class="dni-label-overlay">Encuadre su <b>DNI</b> dentro del marco y sáquele una foto</div>
+    </biometrics-camera>
     <div *ngIf="pictureUrl != null" class="image-container">
         <img [src]="pictureUrl">
         <button *ngIf="pictureUrl != null" mat-button mat-raised-button (click)="rotateImage(90)">↻</button>

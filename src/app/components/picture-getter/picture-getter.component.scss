@@ -19,3 +19,50 @@ button {
 mat-select,mat-form-field {
     width: 100%;
 }
+
+biometrics-camera {
+    .dni-label-overlay {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-align: center;
+        font-weight: normal;
+        font-family: serif;
+        color: mintcream;
+        font-size: 28px;
+    }
+
+    .dni-overlay {
+        box-sizing: border-box;
+        position: absolute;
+        top: 2%;
+        left: 2%;
+        width: 96%;
+        height: 96%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        z-index: 10000;
+    }
+
+    @media screen and (orientation: portrait) {
+        .dni-overlay {
+            background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' preserveAspectRatio='xMidYMid meet' viewBox='0 0 538 860' width='538' height='860'%3E%3Cdefs%3E%3Cpath d='M510.2 0C525.56 0 538 12.45 538 27.8C538 194.24 538 665.77 538 832.21C538 847.56 525.56 860 510.2 860C408.16 860 129.84 860 27.8 860C12.45 860 0 847.56 0 832.21C0 665.77 0 194.24 0 27.8C0 12.45 12.45 0 27.8 0C129.84 0 408.16 0 510.2 0Z' id='czpvm95Ae'%3E%3C/path%3E%3CclipPath id='clipbgKjNduHy'%3E%3Cuse xlink:href='%23czpvm95Ae' opacity='1'%3E%3C/use%3E%3C/clipPath%3E%3C/defs%3E%3Cg%3E%3Cg%3E%3Cg%3E%3Cuse xlink:href='%23czpvm95Ae' opacity='1' fill='%232c52ce' fill-opacity='0.1'%3E%3C/use%3E%3Cg clip-path='url(%23clipbgKjNduHy)'%3E%3Cuse xlink:href='%23czpvm95Ae' opacity='1' fill-opacity='0' stroke='%232250cd' stroke-width='10' stroke-opacity='1'%3E%3C/use%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .dni-label-overlay {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+    }
+
+    @media screen and (orientation: landscape) {
+        .dni-overlay {
+            background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' preserveAspectRatio='xMidYMid meet' viewBox='0 0 860 538' width='860' height='538'%3E%3Cdefs%3E%3Cpath d='M829.7 0C846.43 0 860 13.57 860 30.3C860 131.84 860 406.16 860 507.7C860 524.44 846.43 538 829.7 538C663.76 538 196.24 538 30.3 538C13.57 538 0 524.44 0 507.7C0 406.16 0 131.84 0 30.3C0 13.57 13.57 0 30.3 0C196.24 0 663.76 0 829.7 0Z' id='dcRwhO0yN'%3E%3C/path%3E%3CclipPath id='clipa1djUW2xB'%3E%3Cuse xlink:href='%23dcRwhO0yN' opacity='1'%3E%3C/use%3E%3C/clipPath%3E%3C/defs%3E%3Cg%3E%3Cg%3E%3Cg%3E%3Cuse xlink:href='%23dcRwhO0yN' opacity='1' fill='%232c52ce' fill-opacity='0.1'%3E%3C/use%3E%3Cg clip-path='url(%23clipa1djUW2xB)'%3E%3Cuse xlink:href='%23dcRwhO0yN' opacity='1' fill-opacity='0' stroke='%232250cd' stroke-width='10' stroke-opacity='1'%3E%3C/use%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .dni-label-overlay {
+            transform: translate(-50%, -50%);
+        }
+    }
+}
