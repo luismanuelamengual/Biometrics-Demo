@@ -5,7 +5,7 @@
     </mat-card-header>
     <mat-card-content>
         <mat-vertical-stepper>
-            <mat-step label="Paso 1: Prueba de vida">
+            <mat-step label="Prueba de vida">
                 <div *ngIf="livenessPictures.length > 0" class="image-container">
                     <img [src]="livenessPictures[0]">
                 </div>
@@ -17,13 +17,13 @@
                     </button>
                 </div>
             </mat-step>
-            <mat-step label="Paso 2: Foto del frente documento">
+            <mat-step label="Foto del frente documento">
                 <app-dni-picture-getter (dniCaptured)="onDniFrontCaptured($event)"></app-dni-picture-getter>
             </mat-step>
-            <mat-step label="Paso 3: Foto del dorso documento">
+            <mat-step label="Foto del dorso documento">
                 <app-dni-picture-getter (dniCaptured)="onDniBackCaptured($event)"></app-dni-picture-getter>
             </mat-step>
-            <mat-step label="Paso 4: Verificación">
+            <mat-step label="Verificación">
                 <div *ngIf="verificationError != null || verificationResults != null || verificationDniResults != null" class="results-section">
                     <div *ngIf="verificationError != null" class="results-error">
                         {{ verificationError }}
