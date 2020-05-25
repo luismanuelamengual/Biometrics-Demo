@@ -43,7 +43,7 @@
                                     "with": "src/environments/environment.dev.ts"
                                 }
                             ],
-                            "baseHref": "/biometrics/",
+                            "baseHref": "/demo/",
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
