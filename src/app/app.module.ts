@@ -8,6 +8,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {IdentificationComponent} from './pages/identification/identification.component';
 import {DniPictureGetterComponent} from './components/dni-picture-getter/dni-picture-getter.component';
 import {TitleCasePipe} from '@angular/common';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
 
 @NgModule({
     declarations: [
@@ -19,7 +21,8 @@ import {TitleCasePipe} from '@angular/common';
         BrowserModule,
         BrowserAnimationsModule,
         AngularMaterialModule,
-        HttpClientModule
+        HttpClientModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
     ],
     providers: [
         TitleCasePipe
