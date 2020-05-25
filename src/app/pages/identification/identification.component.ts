@@ -30,7 +30,6 @@ export class IdentificationComponent {
     }
 
     public onDniFrontCaptured(picture) {
-        console.log(picture);
         this.documentFrontPicture = picture;
     }
 
