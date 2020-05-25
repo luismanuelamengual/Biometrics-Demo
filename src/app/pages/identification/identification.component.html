@@ -49,7 +49,7 @@
                             </mat-expansion-panel-header>
                             <div *ngFor="let dataItem of verificationDniResults.data.information | keyvalue" class="verification-result-item">
                                 <div class="verification-label">{{ dataItem.key | titlecase }}</div>
-                                <div class="verification-value verification-value-success">{{ dataItem.value }}</div>
+                                <div class="verification-value verification-value-success">{{ formatDocumentItem(dataItem) }}</div>
                             </div>
                         </mat-expansion-panel>
                     </ng-container>

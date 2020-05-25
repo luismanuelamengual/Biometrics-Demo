@@ -72,4 +72,12 @@ export class IdentificationComponent {
             this.verifying = false;
         }
     }
+
+    public formatDocumentItem(documentItem: {key: string, value: any}) {
+        let result = documentItem.value;
+        if (documentItem.key === 'birthDate' || documentItem.key === 'expirationDate') {
+            result = (new Date(documentItem.value)).toISOString().split('T')[0];
+        }
+        return result;
+    }
 }
