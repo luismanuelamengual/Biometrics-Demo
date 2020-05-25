@@ -9,7 +9,7 @@
                 <div *ngIf="livenessPictures.length > 0" class="image-container">
                     <img [src]="livenessPictures[0]">
                 </div>
-                <biometrics-liveness *ngIf="livenessSessionRunning" (sessionCompleted)="onLivenessCompleted($event.detail)" (sessionStarted)="onLivenessSessionStarted()" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness>
+                <biometrics-liveness *ngIf="livenessSessionRunning" (sessionCompleted)="onLivenessCompleted($event.detail)" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness>
                 <div class="buttons-container">
                     <button mat-button mat-raised-button color="primary" *ngIf="!livenessSessionRunning" (click)="startLivenessSession()">
                         <ng-container *ngIf="livenessPictures.length === 0">Realizar prueba de vida</ng-container>
@@ -18,10 +18,10 @@
                 </div>
             </mat-step>
             <mat-step label="Paso 2: Foto del frente documento">
-                <app-dni-picture-getter (pictureCaptured)="onDocumentFrontCaptured($event)"></app-dni-picture-getter>
+                <app-dni-picture-getter (dniCaptured)="onDniFrontCaptured($event)"></app-dni-picture-getter>
             </mat-step>
             <mat-step label="Paso 3: Foto del dorso documento">
-                <app-dni-picture-getter (pictureCaptured)="onDocumentBackCaptured($event)"></app-dni-picture-getter>
+                <app-dni-picture-getter (dniCaptured)="onDniBackCaptured($event)"></app-dni-picture-getter>
             </mat-step>
             <mat-step label="Paso 4: Verificación">
                 <div *ngIf="verificationError != null || verificationResults != null" class="results-section">

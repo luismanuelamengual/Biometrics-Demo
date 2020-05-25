@@ -9,7 +9,7 @@ import ImageUtils from 'src/app/utils/image-utils';
 export class DniPictureGetterComponent implements AfterViewInit {
 
     @Output()
-    pictureCaptured = new EventEmitter();
+    dniCaptured = new EventEmitter();
 
     pictureUrl = null;
 
@@ -29,7 +29,7 @@ export class DniPictureGetterComponent implements AfterViewInit {
 
     public setPicture(pictureUrl) {
         this.pictureUrl = pictureUrl;
-        this.pictureCaptured.emit(this.pictureUrl);
+        this.dniCaptured.emit(this.pictureUrl);
     }
 
     public reset() {

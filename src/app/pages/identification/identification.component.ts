@@ -29,20 +29,17 @@ export class IdentificationComponent {
         this.livenessSessionRunning = true;
     }
 
-    public onDocumentFrontCaptured(picture) {
+    public onDniFrontCaptured(picture) {
+        console.log(picture);
         this.documentFrontPicture = picture;
     }
 
-    public onDocumentBackCaptured(picture) {
+    public onDniBackCaptured(picture) {
         this.documentBackPicture = picture;
-    }
-
-    public onLivenessSessionStarted() {
     }
 
     public onLivenessCompleted(livenessData) {
         this.livenessPictures = livenessData.pictures;
-        this.livenessSessionRunning = false;
     }
 
     public async verify() {
