@@ -35,10 +35,10 @@
                             </mat-expansion-panel-header>
                             <div class="verification-result-item">
                                 <div class="verification-label">Match</div>
-                                <div *ngIf="verificationResults.data.match" class="verification-value verification-value-success">POSITIVO</div>
-                                <div *ngIf="!verificationResults.data.match" class="verification-value verification-value-danger">NEGATIVO</div>
+                                <div *ngIf="verificationResults.data && verificationResults.data.match" class="verification-value verification-value-success">POSITIVO</div>
+                                <div *ngIf="!verificationResults.data || !verificationResults.data.match" class="verification-value verification-value-danger">NEGATIVO</div>
                             </div>
-                            <div *ngIf="verificationResults.data.similarity" class="verification-result-item">
+                            <div *ngIf="verificationResults.data && verificationResults.data.similarity" class="verification-result-item">
                                 <div class="verification-label">Similaridad</div>
                                 <div class="verification-value verification-value-success">{{ verificationResults.data.similarity }}</div>
                             </div>

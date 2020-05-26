@@ -61,11 +61,12 @@ export class IdentificationComponent {
                 formData.append('documentBack', documentBackBytes);
                 this.verificationResults = await this.http.post( `${environment.biometricsUrl}/v1/verify_identity`, formData, {headers: { Authorization: 'Bearer ' + environment.biometricsApiKey}}).toPromise();
 
-                const formDataDocument = new FormData();
-                formDataDocument.append('documentFront', documentFrontBytes);
-                formDataDocument.append('documentBack', documentBackBytes);
-                this.verificationDniResults = await this.http.post(`${environment.biometricsUrl}/v1/scan_document_data`, formDataDocument, {headers: { Authorization: 'Bearer ' + environment.biometricsApiKey}}).toPromise();
-
+                try {
+                    const formDataDocument = new FormData();
+                    formDataDocument.append('documentFront', documentFrontBytes);
+                    formDataDocument.append('documentBack', documentBackBytes);
+                    this.verificationDniResults = await this.http.post(`${environment.biometricsUrl}/v1/scan_document_data`, formDataDocument, {headers: { Authorization: 'Bearer ' + environment.biometricsApiKey}}).toPromise();
+                } catch (e) {}
             } catch (e) {
                 this.verificationError = e.message;
             }
