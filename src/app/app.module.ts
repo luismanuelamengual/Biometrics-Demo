@@ -10,19 +10,23 @@ import {DniPictureGetterComponent} from './components/dni-picture-getter/dni-pic
 import {TitleCasePipe} from '@angular/common';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
+import {AppRoutingModule} from './app-routing.module';
+import {LivenessComponent} from './pages/liveness/liveness.component';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        IdentificationComponent,
-        DniPictureGetterComponent
-    ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         AngularMaterialModule,
         HttpClientModule,
+        AppRoutingModule,
         ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
+    ],
+    declarations: [
+        AppComponent,
+        IdentificationComponent,
+        LivenessComponent,
+        DniPictureGetterComponent
     ],
     providers: [
         TitleCasePipe

@@ -1,4 +1,18 @@
-<mat-toolbar color="primary">Biometrics - DEMO</mat-toolbar>
+<mat-toolbar color="primary">
+    Biometrics - DEMO
+    <span class="fill-space"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+            <span routerLink="/liveness" routerLinkActive="active">Prueba de vida</span>
+        </button>
+        <button mat-menu-item>
+            <span routerLink="/identificator" routerLinkActive="active">Identificador de personas</span>
+        </button>
+    </mat-menu>
+</mat-toolbar>
 <div class="main-container container">
-    <app-identification></app-identification>
+    <router-outlet></router-outlet>
 </div>
