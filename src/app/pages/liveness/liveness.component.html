@@ -17,3 +17,16 @@
         <button mat-button mat-raised-button color="primary" *ngIf="!livenessSessionRunning" (click)="startLivenessSession()">Realizar prueba de vida</button>
     </mat-card-content>
 </mat-card>
+
+<mat-card *ngIf="livenessPictures.length > 0">
+    <mat-card-header>
+        <mat-card-title>Capturas de imagenes</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="images-section">
+            <div *ngFor="let picture of livenessPictures" class="image-container">
+                <img [src]="picture">
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

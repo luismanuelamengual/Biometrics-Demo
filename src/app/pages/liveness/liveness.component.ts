@@ -12,7 +12,7 @@ export class LivenessComponent {
     biometricsApiKey: string;
     livenessPictures = [];
     livenessSessionRunning = false;
-    livenessInstructionsCount = '5';
+    livenessInstructionsCount = 3;
 
     constructor() {
         this.biometricsUrl = environment.biometricsUrl;

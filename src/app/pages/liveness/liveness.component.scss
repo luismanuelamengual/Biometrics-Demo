@@ -32,5 +32,19 @@ mat-card {
             -webkit-box-shadow: none !important;
             box-shadow: none !important;
         }
+
+        .images-section {
+            width: 100%;
+
+            .image-container {
+                width: 50%;
+                display: inline-block;
+                padding: 10px;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
     }
 }
