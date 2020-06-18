@@ -9,6 +9,7 @@
                 <div *ngIf="livenessPictures.length > 0" class="image-container">
                     <img [src]="livenessPictures[0]">
                 </div>
+                <button *ngIf="livenessSessionRunning" class="liveness-close-button" (click)="stopLivenessSession()">x</button>
                 <biometrics-liveness *ngIf="livenessSessionRunning" (sessionCompleted)="onLivenessCompleted($event.detail)" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness>
                 <div class="buttons-container">
                     <button mat-button mat-raised-button color="primary" *ngIf="!livenessSessionRunning" (click)="startLivenessSession()">

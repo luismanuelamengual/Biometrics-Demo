@@ -31,6 +31,10 @@ export class IdentificationComponent {
         this.livenessSessionRunning = true;
     }
 
+    public stopLivenessSession() {
+        this.livenessSessionRunning = false;
+    }
+
     public onDniFrontCaptured(picture) {
         this.documentFrontPicture = picture;
     }

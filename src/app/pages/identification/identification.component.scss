@@ -9,6 +9,24 @@ mat-card {
         z-index: 50000;
     }
 
+    .liveness-close-button {
+        position: fixed;
+        right: 10px;
+        top: 10px;
+        width: 30px;
+        height: 30px;
+        border: 3px solid gray;
+        font-size: 16px;
+        font-weight: 600;
+        color: white;
+        border-radius: 50%;
+        z-index: 60000;
+        background: black;
+        outline: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+
     mat-label {
         display: block;
         margin-bottom: 10px;
