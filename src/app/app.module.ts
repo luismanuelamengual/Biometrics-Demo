@@ -13,6 +13,7 @@ import {environment} from '../environments/environment';
 import {AppRoutingModule} from './app-routing.module';
 import {LivenessComponent} from './pages/liveness/liveness.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BiometricsService} from './services/biometrics.service';
 
 @NgModule({
     imports: [
@@ -32,6 +33,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         DniPictureGetterComponent
     ],
     providers: [
+        BiometricsService,
         TitleCasePipe
     ],
     bootstrap: [AppComponent],

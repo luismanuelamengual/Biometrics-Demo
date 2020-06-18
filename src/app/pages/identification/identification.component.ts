@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import ImageUtils from 'src/app/utils/image-utils';
 import {environment} from '../../../environments/environment';
 import {TitleCasePipe} from '@angular/common';
+import {BiometricsService} from '../../services/biometrics.service';
 
 @Component({
     selector: 'app-identification',
@@ -22,7 +22,7 @@ export class IdentificationComponent {
     verificationError = null;
     verifying = false;
 
-    constructor(private http: HttpClient, public titleCasePipe: TitleCasePipe) {
+    constructor(private biometrics: BiometricsService, public titleCasePipe: TitleCasePipe) {
         this.biometricsUrl = environment.biometricsUrl;
         this.biometricsApiKey = environment.biometricsApiKey;
     }
@@ -55,21 +55,9 @@ export class IdentificationComponent {
             this.verificationDniResults = null;
             this.verificationError = null;
             try {
-                const selfieBytes = ImageUtils.convertImageToBlob(this.livenessPictures[0]);
-                const documentFrontBytes = ImageUtils.convertImageToBlob(this.documentFrontPicture);
-                const documentBackBytes = ImageUtils.convertImageToBlob(this.documentBackPicture);
-
-                const formData = new FormData();
-                formData.append('selfie', selfieBytes);
-                formData.append('documentFront', documentFrontBytes);
-                formData.append('documentBack', documentBackBytes);
-                this.verificationResults = await this.http.post( `${environment.biometricsUrl}/v1/verify_identity`, formData, {headers: { Authorization: 'Bearer ' + environment.biometricsApiKey}}).toPromise();
-
+                this.verificationResults = await this.biometrics.verifyIdentify(this.livenessPictures[0], this.documentFrontPicture, this.documentBackPicture);
                 try {
-                    const formDataDocument = new FormData();
-                    formDataDocument.append('documentFront', documentFrontBytes);
-                    formDataDocument.append('documentBack', documentBackBytes);
-                    this.verificationDniResults = await this.http.post(`${environment.biometricsUrl}/v1/scan_document_data`, formDataDocument, {headers: { Authorization: 'Bearer ' + environment.biometricsApiKey}}).toPromise();
+                    this.verificationDniResults = await this.biometrics.scanDocumentData(this.documentFrontPicture, this.documentBackPicture);
                 } catch (e) {}
             } catch (e) {
                 this.verificationError = e.message;
