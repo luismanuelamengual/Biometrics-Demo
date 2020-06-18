@@ -5,7 +5,7 @@
     </mat-card-header>
     <mat-card-content>
         <button *ngIf="livenessSessionRunning" class="liveness-close-button" (click)="stopLivenessSession()">x</button>
-        <biometrics-liveness *ngIf="livenessSessionRunning" (sessionCompleted)="onLivenessCompleted($event.detail)" [maxInstructions]="livenessInstructionsCount" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness>
+        <biometrics-liveness *ngIf="livenessSessionRunning" (sessionCompleted)="onLivenessCompleted($event.detail)" [maxInstructions]="livenessInstructionsCount" [timeout]="livenessTimeoutSeconds" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness>
         <mat-form-field>
             <mat-label>Cantidad de instrucciones</mat-label>
             <mat-select [(ngModel)]="livenessInstructionsCount">
@@ -14,13 +14,21 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
-        <button mat-button mat-raised-button color="primary" *ngIf="!livenessSessionRunning" (click)="startLivenessSession()">Realizar prueba de vida</button>
+        <mat-form-field>
+            <mat-label>Tiempo de timeout de sesión (segundos)</mat-label>
+            <mat-select [(ngModel)]="livenessTimeoutSeconds">
+                <mat-option *ngFor="let i of [5,10,15,20,25,30,35,40,45,50,55,60]" [value]="i">
+                    {{ i }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-button mat-raised-button color="primary" (click)="startLivenessSession()">Realizar prueba de vida</button>
     </mat-card-content>
 </mat-card>
 
 <mat-card *ngIf="livenessPictures.length > 0" class="results-card">
     <mat-card-header>
-        <mat-card-title>Capturas de imagenes</mat-card-title>
+        <mat-card-title>Captura de exposiciones</mat-card-title>
     </mat-card-header>
     <mat-card-content>
         <div class="images-section">
