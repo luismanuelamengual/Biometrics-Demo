@@ -1,4 +1,10 @@
 mat-card {
+
+    &.results-card {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
     biometrics-liveness {
         position: fixed;
         height: 100%;
