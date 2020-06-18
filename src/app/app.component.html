@@ -5,12 +5,8 @@
         <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-            <span routerLink="/liveness" routerLinkActive="active">Prueba de vida</span>
-        </button>
-        <button mat-menu-item>
-            <span routerLink="/identificator" routerLinkActive="active">Identificador de personas</span>
-        </button>
+        <button mat-menu-item routerLink="/liveness" routerLinkActive="active">Prueba de vida</button>
+        <button mat-menu-item routerLink="/identificator" routerLinkActive="active">Identificador de personas</button>
     </mat-menu>
 </mat-toolbar>
 <div class="main-container container">

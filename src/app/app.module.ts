@@ -12,9 +12,12 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {AppRoutingModule} from './app-routing.module';
 import {LivenessComponent} from './pages/liveness/liveness.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
     imports: [
+        FormsModule,
+        ReactiveFormsModule,
         BrowserModule,
         BrowserAnimationsModule,
         AngularMaterialModule,
