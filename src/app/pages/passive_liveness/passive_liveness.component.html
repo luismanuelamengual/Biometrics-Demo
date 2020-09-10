@@ -1,0 +1,33 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Prueba de vida pasiva</mat-card-title>
+        <mat-card-subtitle>Detección de prueba de vida</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <button *ngIf="livenessSessionRunning" class="liveness-close-button" (click)="stopLivenessSession()">x</button>
+        <biometrics-liveness-passive *ngIf="livenessSessionRunning" (livenessVerificationComplete)="onLivenessCompleted($event.detail)" [timeout]="livenessTimeoutSeconds" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness-passive>
+        <mat-form-field>
+            <mat-label>Tiempo de timeout de sesión (segundos)</mat-label>
+            <mat-select [(ngModel)]="livenessTimeoutSeconds">
+                <mat-option *ngFor="let i of [5,10,15,20,25,30,35,40,45,50,55,60]" [value]="i">
+                    {{ i }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-button mat-raised-button color="primary" (click)="startLivenessSession()">Realizar prueba de vida</button>
+    </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="livenessVerificationCompleted" class="results-card">
+    <mat-card-header>
+        <mat-card-title>Resultado de verificación</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        Persona viva verificada:
+        <span class="liveness-verification liveness-verification-success" *ngIf="livenessVerified">VERDADERO</span>
+        <span class="liveness-verification liveness-verification-fail" *ngIf="!livenessVerified">FALSO</span>
+        <div class="image-section">
+            <img [src]="livenessPicture">
+        </div>
+    </mat-card-content>
+</mat-card>
