@@ -12,6 +12,7 @@ export class DniPictureGetterComponent implements AfterViewInit {
     dniCaptured = new EventEmitter();
 
     pictureUrl = null;
+    cameraOpen = false;
 
     public ngAfterViewInit() {
         this.reset();
@@ -19,6 +20,7 @@ export class DniPictureGetterComponent implements AfterViewInit {
 
     public onPictureCaptured(picture) {
         this.setPicture(picture);
+        this.cameraOpen = false;
     }
 
     public rotateImage(degrees = 90) {
@@ -34,5 +36,9 @@ export class DniPictureGetterComponent implements AfterViewInit {
 
     public reset() {
         this.pictureUrl = null;
+    }
+
+    openCamera() {
+        this.cameraOpen = true;
     }
 }

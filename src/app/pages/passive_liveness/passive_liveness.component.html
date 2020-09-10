@@ -5,15 +5,7 @@
     </mat-card-header>
     <mat-card-content>
         <button *ngIf="livenessSessionRunning" class="liveness-close-button" (click)="stopLivenessSession()">x</button>
-        <biometrics-liveness-passive *ngIf="livenessSessionRunning" (livenessVerificationComplete)="onLivenessCompleted($event.detail)" [timeout]="livenessTimeoutSeconds" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness-passive>
-        <mat-form-field>
-            <mat-label>Tiempo de timeout de sesión (segundos)</mat-label>
-            <mat-select [(ngModel)]="livenessTimeoutSeconds">
-                <mat-option *ngFor="let i of [5,10,15,20,25,30,35,40,45,50,55,60]" [value]="i">
-                    {{ i }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+        <biometrics-liveness-passive *ngIf="livenessSessionRunning" (livenessVerificationComplete)="onLivenessCompleted($event.detail)" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness-passive>
         <button mat-button mat-raised-button color="primary" (click)="startLivenessSession()">Realizar prueba de vida</button>
     </mat-card-content>
 </mat-card>

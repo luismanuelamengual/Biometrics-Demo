@@ -1,6 +1,6 @@
 {
     "name": "Biometrics",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "scripts": {
         "ng": "ng",
         "start": "ng serve --host 0.0.0.0 --port 4200 --proxy-config proxy.conf.json --ssl true",
@@ -22,7 +22,7 @@
         "@angular/platform-browser-dynamic": "~9.1.9",
         "@angular/router": "~9.1.9",
         "@angular/service-worker": "~9.1.9",
-        "biometrics-components": "1.0.7",
+        "biometrics-components": "1.0.8",
         "rxjs": "~6.5.5",
         "tslib": "^1.10.0",
         "webrtc-adapter": "^7.6.1",

@@ -30,7 +30,9 @@ export class PassiveLivenessComponent {
     }
 
     public onLivenessCompleted(livenessData) {
-        this.livenessSessionRunning = false;
+        if (livenessData.livenessVerified) {
+            this.livenessSessionRunning = false;
+        }
         this.livenessVerificationCompleted = true;
         this.livenessPicture = livenessData.picture;
         this.livenessVerified = livenessData.livenessVerified;
