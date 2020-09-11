@@ -15,12 +15,13 @@ export class IdentificationComponent {
     biometricsApiKey: string;
     documentFrontPicture = null;
     documentBackPicture = null;
-    livenessPictures = [];
+    livenessPicture = null;
     livenessSessionRunning = false;
     verificationResults = null;
     verificationDniResults = null;
     verificationError = null;
     verifying = false;
+    livenessType: 'passive' | 'active' = 'passive';
 
     constructor(private biometrics: BiometricsService, public titleCasePipe: TitleCasePipe) {
         this.biometricsUrl = environment.biometricsUrl;
@@ -44,8 +45,15 @@ export class IdentificationComponent {
     }
 
     public onLivenessCompleted(livenessData) {
-        this.livenessPictures = livenessData.pictures;
+        this.livenessPicture = livenessData.pictures[0];
         this.livenessSessionRunning = false;
+    }
+
+    public onPassiveLivenessCompleted(livenessData) {
+        if (livenessData.livenessVerified) {
+            this.livenessPicture = livenessData.picture;
+            this.livenessSessionRunning = false;
+        }
     }
 
     public async verify() {
@@ -55,7 +63,7 @@ export class IdentificationComponent {
             this.verificationDniResults = null;
             this.verificationError = null;
             try {
-                this.verificationResults = await this.biometrics.verifyIdentify(this.livenessPictures[0], this.documentFrontPicture, this.documentBackPicture);
+                this.verificationResults = await this.biometrics.verifyIdentify(this.livenessPicture, this.documentFrontPicture, this.documentBackPicture);
                 try {
                     this.verificationDniResults = await this.biometrics.scanDocumentData(this.documentFrontPicture, this.documentBackPicture);
                 } catch (e) {}
