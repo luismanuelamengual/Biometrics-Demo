@@ -1,5 +1,5 @@
 <div class="picture-getter">
-    <biometrics-camera #camera (pictureCaptured)="onPictureCaptured($event.detail)" [ngClass]="{'open': cameraOpen}">
+    <biometrics-camera #camera (pictureCaptured)="onPictureCaptured($event.detail)" *ngIf="cameraOpen">
         <div class="dni-overlay"></div>
         <div class="dni-label-overlay">Encuadre su <b>DNI</b> dentro del marco y sáquele una foto</div>
     </biometrics-camera>
@@ -15,4 +15,3 @@
         </button>
     </div>
 </div>
-
