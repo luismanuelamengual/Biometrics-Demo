@@ -52,11 +52,18 @@ mat-card {
 
         img {
             width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            object-position: left;
         }
     }
 
     .buttons-container {
         margin-top: 10px;
+
+        mat-form-field {
+            width: 100%;
+        }
     }
 
     .picture-container {
