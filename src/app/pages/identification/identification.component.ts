@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import ImageUtils from 'src/app/utils/image-utils';
 import {environment} from '../../../environments/environment';
 import {TitleCasePipe} from '@angular/common';
 import {BiometricsService} from '../../services/biometrics.service';
