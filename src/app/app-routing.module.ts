@@ -8,7 +8,7 @@ const routes: Routes = [
     {path: 'identificator', component: IdentificationComponent},
     {path: 'liveness', component: LivenessComponent},
     {path: 'passive_liveness', component: PassiveLivenessComponent},
-    {path: '**', pathMatch: 'full', redirectTo: '/liveness'}
+    {path: '**', pathMatch: 'full', redirectTo: '/identificator'}
 ];
 
 @NgModule({
