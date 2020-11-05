@@ -13,7 +13,7 @@ export class LivenessComponent {
     livenessPictures = [];
     livenessSessionRunning = false;
     livenessInstructionsCount = 5;
-    livenessTimeoutSeconds = 5;
+    livenessTimeoutSeconds = 10;
 
     constructor() {
         this.biometricsUrl = environment.biometricsUrl;
