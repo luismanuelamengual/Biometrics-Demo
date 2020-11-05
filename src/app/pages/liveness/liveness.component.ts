@@ -12,8 +12,8 @@ export class LivenessComponent {
     biometricsApiKey: string;
     livenessPictures = [];
     livenessSessionRunning = false;
-    livenessInstructionsCount = 3;
-    livenessTimeoutSeconds = 10;
+    livenessInstructionsCount = 5;
+    livenessTimeoutSeconds = 5;
 
     constructor() {
         this.biometricsUrl = environment.biometricsUrl;
@@ -28,8 +28,15 @@ export class LivenessComponent {
         this.livenessSessionRunning = false;
     }
 
-    public onLivenessCompleted(livenessData) {
-        this.livenessPictures = livenessData.pictures;
+    public async onLivenessCompleted(livenessData) {
+        this.livenessPictures = [];
+        for (const picture of livenessData.pictures) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                this.livenessPictures.push(reader.result);
+            };
+            reader.readAsDataURL(picture);
+        }
         this.livenessSessionRunning = false;
     }
 }

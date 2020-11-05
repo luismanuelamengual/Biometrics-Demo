@@ -20,7 +20,7 @@ export class IdentificationComponent {
     verificationDniResults = null;
     verificationError = null;
     verifying = false;
-    livenessType: 'passive' | 'active' = 'passive';
+    livenessType: 'passive' | 'active' = 'active';
 
     constructor(private biometrics: BiometricsService, public titleCasePipe: TitleCasePipe) {
         this.biometricsUrl = environment.biometricsUrl;
@@ -44,7 +44,11 @@ export class IdentificationComponent {
     }
 
     public onLivenessCompleted(livenessData) {
-        this.livenessPicture = livenessData.pictures[0];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            this.livenessPicture = reader.result;
+        };
+        reader.readAsDataURL(livenessData.pictures[0]);
         this.livenessSessionRunning = false;
     }
 

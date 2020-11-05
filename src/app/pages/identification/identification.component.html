@@ -10,7 +10,7 @@
                     <img [src]="livenessPicture">
                 </div>
                 <button *ngIf="livenessSessionRunning" class="liveness-close-button" (click)="stopLivenessSession()">x</button>
-                <biometrics-liveness *ngIf="livenessSessionRunning && livenessType == 'active'" (sessionCompleted)="onLivenessCompleted($event.detail)" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness>
+                <biometrics-liveness *ngIf="livenessSessionRunning && livenessType == 'active'" (sessionSucceded)="onLivenessCompleted($event.detail)" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness>
                 <biometrics-liveness-passive *ngIf="livenessSessionRunning && livenessType == 'passive'" (livenessVerificationComplete)="onPassiveLivenessCompleted($event.detail)" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness-passive>
                 <div class="buttons-container">
                     <mat-form-field appearance="fill">
