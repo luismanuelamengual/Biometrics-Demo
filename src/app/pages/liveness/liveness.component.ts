@@ -14,6 +14,7 @@ export class LivenessComponent {
     livenessSessionRunning = false;
     livenessInstructionsCount = 5;
     livenessTimeoutSeconds = 10;
+    cameraFacingMode: 'environment' | 'user' = 'user';
 
     constructor() {
         this.biometricsUrl = environment.biometricsUrl;
