@@ -55,7 +55,18 @@ export class DniPictureGetterComponent implements AfterViewInit {
             context.drawImage(img, 0, 0, iwScaled, ihScaled);
             this.setPicture(this.canvas.nativeElement.toDataURL('image/jpeg'));
         };
-        img.src = URL.createObjectURL(picture);
+        try {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                img.src = e.target.result as string;
+            };
+            reader.onerror = (e) => {
+                img.src = URL.createObjectURL(picture);
+            };
+            reader.readAsDataURL(picture);
+        } catch (e) {
+            img.src = URL.createObjectURL(picture);
+        }
     }
 
     public rotateImage(degrees = 90) {
