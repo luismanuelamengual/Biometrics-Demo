@@ -1,8 +1,16 @@
 <div class="picture-getter">
-    <biometrics-camera #camera (pictureCaptured)="onPictureCaptured($event.detail)" *ngIf="cameraOpen" [buttonStyle]="'classic'" [fullScreen]="false">
-        <div class="dni-overlay"></div>
-        <div class="dni-label-overlay">Encuadre su <b>DNI</b> dentro del marco y sáquele una foto</div>
-    </biometrics-camera>
+    <ng-container *ngIf="pictureCaptureSupported == false">
+        <biometrics-camera #camera (pictureCaptured)="onPictureCaptured($event.detail)" *ngIf="cameraOpen" [buttonStyle]="'classic'" [fullScreen]="false">
+            <div class="dni-overlay"></div>
+            <div class="dni-label-overlay">Encuadre su <b>DNI</b> dentro del marco y sáquele una foto</div>
+        </biometrics-camera>
+    </ng-container>
+
+    <ng-container *ngIf="pictureCaptureSupported == true">
+        <canvas #canvas></canvas>
+        <input #captureInput style="display: none" type="file" (change)="onNativePictureCaptured($event.target.files[0])" accept="image/*" capture="camera">
+    </ng-container>
+
     <div *ngIf="pictureUrl != null" class="image-container">
         <img [src]="pictureUrl">
         <button *ngIf="pictureUrl != null" mat-button mat-raised-button (click)="rotateImage(90)">↻</button>
