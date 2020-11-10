@@ -33,13 +33,16 @@
     </mat-card-content>
 </mat-card>
 
-<mat-card *ngIf="livenessPictures.length > 0" class="results-card">
+<mat-card *ngIf="livenessPicture !== null || livenessInstructionPictures.length > 0" class="results-card">
     <mat-card-header>
-        <mat-card-title>Captura de exposiciones</mat-card-title>
+        <mat-card-title>Resultados</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <div class="images-section">
-            <div *ngFor="let picture of livenessPictures" class="image-container">
+        <div class="liveness-image-section" *ngIf="livenessPicture !== null">
+            <img [src]="livenessPicture">
+        </div>
+        <div class="images-section" *ngIf="livenessInstructionPictures.length > 0">
+            <div *ngFor="let picture of livenessInstructionPictures" class="image-container">
                 <img [src]="picture">
             </div>
         </div>

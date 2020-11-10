@@ -13,13 +13,6 @@
                 <biometrics-liveness *ngIf="livenessSessionRunning && livenessType == 'active'" (sessionSucceded)="onLivenessCompleted($event.detail)" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness>
                 <biometrics-liveness-passive *ngIf="livenessSessionRunning && livenessType == 'passive'" (livenessVerificationComplete)="onPassiveLivenessCompleted($event.detail)" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness-passive>
                 <div class="buttons-container">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Tipo de prueba de vida</mat-label>
-                        <mat-select [(ngModel)]="livenessType">
-                            <mat-option value="active">Activa</mat-option>
-                            <mat-option value="passive">Pasiva</mat-option>
-                        </mat-select>
-                    </mat-form-field>
                     <button mat-button mat-raised-button color="primary" *ngIf="!livenessSessionRunning" (click)="startLivenessSession()">
                         <ng-container *ngIf="!livenessPicture">Realizar prueba de vida</ng-container>
                         <ng-container *ngIf="livenessPicture">Volver a realizar prueba de vida</ng-container>

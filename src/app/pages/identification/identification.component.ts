@@ -48,7 +48,7 @@ export class IdentificationComponent {
         reader.onloadend = () => {
             this.livenessPicture = reader.result;
         };
-        reader.readAsDataURL(livenessData.pictures[0]);
+        reader.readAsDataURL(livenessData.picture);
         this.livenessSessionRunning = false;
     }
 
