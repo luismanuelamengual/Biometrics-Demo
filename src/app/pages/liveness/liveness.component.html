@@ -15,9 +15,9 @@
             </mat-select>
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Tiempo de timeout de sesión (segundos)</mat-label>
+            <mat-label>Tiempo de timeout por instrucción (segundos)</mat-label>
             <mat-select [(ngModel)]="livenessTimeoutSeconds">
-                <mat-option *ngFor="let i of [5,10,15,20,25,30,35,40,45,50,55,60]" [value]="i">
+                <mat-option *ngFor="let i of [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" [value]="i">
                     {{ i }}
                 </mat-option>
             </mat-select>
