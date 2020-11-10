@@ -11,6 +11,9 @@ export class DniPictureGetterComponent implements AfterViewInit {
     @ViewChild ('canvas', {static: false})
     public canvas: ElementRef;
 
+    @ViewChild('captureInput')
+    public captureInput: ElementRef;
+
     @Output()
     dniCaptured = new EventEmitter();
 
@@ -71,6 +74,10 @@ export class DniPictureGetterComponent implements AfterViewInit {
     }
 
     openCamera() {
-        this.cameraOpen = true;
+        if (this.pictureCaptureSupported) {
+            this.captureInput.nativeElement.click();
+        } else {
+            this.cameraOpen = true;
+        }
     }
 }
