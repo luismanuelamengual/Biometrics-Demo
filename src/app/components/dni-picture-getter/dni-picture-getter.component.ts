@@ -37,7 +37,11 @@ export class DniPictureGetterComponent implements AfterViewInit {
     }
 
     public onPictureCaptured(picture) {
-        this.setPicture(picture);
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            this.setPicture(reader.result);
+        };
+        reader.readAsDataURL(picture);
         this.cameraOpen = false;
     }
 
