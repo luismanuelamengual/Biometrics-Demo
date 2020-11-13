@@ -3,6 +3,14 @@ mat-card {
     &.results-card {
         margin-top: 30px;
         margin-bottom: 30px;
+
+        mat-card-content {
+            padding: 0 15px;
+        }
+
+        .mat-card-header .mat-card-title {
+            margin-bottom: 23px;
+        }
     }
 
     biometrics-liveness, biometrics-liveness-passive {
