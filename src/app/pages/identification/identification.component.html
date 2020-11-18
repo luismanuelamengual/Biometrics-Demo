@@ -6,18 +6,18 @@
     <mat-card-content>
         <mat-vertical-stepper>
             <mat-step label="Prueba de vida">
-                <div *ngIf="livenessPicture" class="image-container">
-                    <img [src]="livenessPicture">
-                </div>
-                <button *ngIf="livenessSessionRunning" class="liveness-close-button" (click)="stopLivenessSession()">x</button>
-                <biometrics-liveness *ngIf="livenessSessionRunning && livenessType == 'active'" (sessionSucceded)="onLivenessCompleted($event.detail)" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness>
-                <biometrics-liveness-passive *ngIf="livenessSessionRunning && livenessType == 'passive'" (livenessVerificationComplete)="onPassiveLivenessCompleted($event.detail)" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness-passive>
                 <div class="buttons-container">
                     <button mat-button mat-raised-button color="primary" *ngIf="!livenessSessionRunning" (click)="startLivenessSession()">
                         <ng-container *ngIf="!livenessPicture">Realizar prueba de vida</ng-container>
                         <ng-container *ngIf="livenessPicture">Volver a realizar prueba de vida</ng-container>
                     </button>
                 </div>
+                <div *ngIf="livenessPicture" class="image-container">
+                    <img [src]="livenessPicture">
+                </div>
+                <button *ngIf="livenessSessionRunning" class="liveness-close-button" (click)="stopLivenessSession()">x</button>
+                <biometrics-liveness *ngIf="livenessSessionRunning && livenessType == 'active'" (sessionSucceded)="onLivenessCompleted($event.detail)" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness>
+                <biometrics-liveness-passive *ngIf="livenessSessionRunning && livenessType == 'passive'" (livenessVerificationComplete)="onPassiveLivenessCompleted($event.detail)" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness-passive>
             </mat-step>
             <mat-step label="Foto del frente documento">
                 <app-dni-picture-getter (dniCaptured)="onDniFrontCaptured($event)"></app-dni-picture-getter>
@@ -25,14 +25,14 @@
             <mat-step label="Foto del dorso documento">
                 <app-dni-picture-getter (dniCaptured)="onDniBackCaptured($event)"></app-dni-picture-getter>
             </mat-step>
-            <mat-step label="Verificación">
-                <button mat-button mat-raised-button color="primary" (click)="verify()" [disabled]="!livenessPicture || documentFrontPicture == null || documentBackPicture == null || verifying == true">
-                    <ng-container *ngIf="verifying == false && !verificationResults">Verificar identidad</ng-container>
-                    <ng-container *ngIf="verifying == false && verificationResults">Verificar identidad nuevamente</ng-container>
-                    <ng-container *ngIf="verifying == true">Verificando ...</ng-container>
-                </button>
-            </mat-step>
         </mat-vertical-stepper>
+        <div class="card-footer">
+            <button mat-button mat-raised-button color="primary" (click)="verify()" [disabled]="!livenessPicture || documentFrontPicture == null || documentBackPicture == null || verifying == true">
+                <ng-container *ngIf="verifying == false && !verificationResults">Verificar identidad</ng-container>
+                <ng-container *ngIf="verifying == false && verificationResults">Verificar identidad nuevamente</ng-container>
+                <ng-container *ngIf="verifying == true">Verificando ...</ng-container>
+            </button>
+        </div>
     </mat-card-content>
 </mat-card>
 

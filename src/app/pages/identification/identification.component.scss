@@ -13,6 +13,10 @@ mat-card {
         }
     }
 
+    .card-footer {
+        margin-top: 15px;
+    }
+
     biometrics-liveness, biometrics-liveness-passive {
         position: fixed;
         height: 100%;
@@ -67,7 +71,7 @@ mat-card {
     }
 
     .buttons-container {
-        margin-top: 10px;
+        margin-bottom: 10px;
 
         mat-form-field {
             width: 100%;

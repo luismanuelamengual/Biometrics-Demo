@@ -1,4 +1,11 @@
 <div class="picture-getter">
+    <div class="buttons-container">
+        <button mat-button mat-raised-button color="primary" (click)="openCamera()">
+            <ng-container *ngIf="pictureUrl == null">Tomar foto</ng-container>
+            <ng-container *ngIf="pictureUrl != null">Volver a tomar la foto</ng-container>
+        </button>
+    </div>
+
     <ng-container *ngIf="pictureCaptureSupported == false">
         <biometrics-camera #camera (pictureCaptured)="onPictureCaptured($event.detail)" *ngIf="cameraOpen" [buttonStyle]="'classic'" [fullScreen]="false">
             <div class="dni-overlay"></div>
@@ -15,11 +22,5 @@
         <img [src]="pictureUrl">
         <button *ngIf="pictureUrl != null" mat-button mat-raised-button (click)="rotateImage(90)">↻</button>
         <button *ngIf="pictureUrl != null" mat-button mat-raised-button (click)="rotateImage(-90)">↺</button>
-    </div>
-    <div class="buttons-container">
-        <button mat-button mat-raised-button color="primary" (click)="openCamera()">
-            <ng-container *ngIf="pictureUrl == null">Tomar foto</ng-container>
-            <ng-container *ngIf="pictureUrl != null">Volver a tomar la foto</ng-container>
-        </button>
     </div>
 </div>
