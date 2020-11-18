@@ -14,7 +14,8 @@ export class LivenessComponent {
     livenessInstructionPictures = [];
     livenessSessionRunning = false;
     livenessInstructionsCount = 5;
-    livenessTimeoutSeconds = 10;
+    livenessInstructionTimeoutSeconds = 10;
+    livenessTimeoutSeconds = 45;
     cameraFacingMode: 'environment' | 'user' = 'user';
 
     constructor() {
