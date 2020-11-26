@@ -11,7 +11,7 @@
             <mat-label>Server Api Key</mat-label>
             <textarea rows="8" matInput [(ngModel)]="biometricsApiKey"></textarea>
         </mat-form-field>
-        <button mat-button mat-raised-button color="primary" (click)="saveChanges()">Guardar</button>
+        <button mat-button mat-raised-button color="primary" (click)="saveChanges()" [disabled]="!isDataChanged()">Guardar</button>
         <button mat-button mat-raised-button (click)="resetChanges()">Reestablecer valores</button>
     </mat-card-content>
 </mat-card>
