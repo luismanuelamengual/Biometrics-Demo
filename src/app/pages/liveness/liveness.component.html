@@ -5,13 +5,20 @@
     </mat-card-header>
     <mat-card-content>
         <button *ngIf="livenessSessionRunning" class="liveness-close-button" (click)="stopLivenessSession()">x</button>
-        <biometrics-liveness *ngIf="livenessSessionRunning" (sessionSucceded)="onLivenessCompleted($event.detail)" [maxInstructions]="livenessInstructionsCount" [timeout]="livenessTimeoutSeconds" [instructionTimeout]="livenessInstructionTimeoutSeconds" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey" [cameraFacingMode]="cameraFacingMode"></biometrics-liveness>
+        <biometrics-liveness *ngIf="livenessSessionRunning" (sessionSucceded)="onLivenessCompleted($event.detail)" [mode]="livenessMode" [maxInstructions]="livenessInstructionsCount" [timeout]="livenessTimeoutSeconds" [instructionTimeout]="livenessInstructionTimeoutSeconds" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey" [cameraFacingMode]="cameraFacingMode"></biometrics-liveness>
         <mat-form-field>
             <mat-label>Cantidad de instrucciones</mat-label>
             <mat-select [(ngModel)]="livenessInstructionsCount">
                 <mat-option *ngFor="let i of [4,5,6,7,8]" [value]="i">
                     {{ i }}
                 </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Modo</mat-label>
+            <mat-select [(ngModel)]="livenessMode">
+                <mat-option value="classic">Clásico</mat-option>
+                <mat-option value="mask">Máscara</mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field>

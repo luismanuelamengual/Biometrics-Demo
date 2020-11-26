@@ -16,6 +16,7 @@ export class LivenessComponent {
     livenessInstructionsCount = 5;
     livenessInstructionTimeoutSeconds = 10;
     livenessTimeoutSeconds = 45;
+    livenessMode: 'classic' | 'mask' = 'classic';
     cameraFacingMode: 'environment' | 'user' = 'user';
 
     constructor() {
