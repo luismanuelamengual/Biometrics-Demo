@@ -1,5 +1,4 @@
-import {Component} from '@angular/core';
-import {environment} from '../../../environments/environment';
+import {Component, OnInit} from '@angular/core';
 import {TitleCasePipe} from '@angular/common';
 import {BiometricsService} from '../../services/biometrics.service';
 
@@ -8,7 +7,7 @@ import {BiometricsService} from '../../services/biometrics.service';
     templateUrl: './identification.component.html',
     styleUrls: ['./identification.component.scss']
 })
-export class IdentificationComponent {
+export class IdentificationComponent implements OnInit {
 
     biometricsUrl: string;
     biometricsApiKey: string;
@@ -23,8 +22,11 @@ export class IdentificationComponent {
     livenessType: 'passive' | 'active' = 'active';
 
     constructor(private biometrics: BiometricsService, public titleCasePipe: TitleCasePipe) {
-        this.biometricsUrl = environment.biometricsUrl;
-        this.biometricsApiKey = environment.biometricsApiKey;
+    }
+
+    ngOnInit(): void {
+        this.biometricsUrl = this.biometrics.getServerUrl();
+        this.biometricsApiKey = this.biometrics.getServerApiKey();
     }
 
     public startLivenessSession() {

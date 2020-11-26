@@ -1,12 +1,12 @@
-import {Component} from '@angular/core';
-import {environment} from '../../../environments/environment';
+import {Component, OnInit} from '@angular/core';
+import {BiometricsService} from '../../services/biometrics.service';
 
 @Component({
     selector: 'app-liveness',
     templateUrl: './liveness.component.html',
     styleUrls: ['./liveness.component.scss']
 })
-export class LivenessComponent {
+export class LivenessComponent implements OnInit {
 
     biometricsUrl: string;
     biometricsApiKey: string;
@@ -19,9 +19,12 @@ export class LivenessComponent {
     livenessMode: 'classic' | 'mask' = 'classic';
     cameraFacingMode: 'environment' | 'user' = 'user';
 
-    constructor() {
-        this.biometricsUrl = environment.biometricsUrl;
-        this.biometricsApiKey = environment.biometricsApiKey;
+    constructor(private biometrics: BiometricsService) {
+    }
+
+    ngOnInit(): void {
+        this.biometricsUrl = this.biometrics.getServerUrl();
+        this.biometricsApiKey = this.biometrics.getServerApiKey();
     }
 
     public startLivenessSession() {
