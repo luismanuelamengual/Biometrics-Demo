@@ -7,7 +7,7 @@
     },
 
     "/biometrics/*": {
-        "target": "http://nban013dxu06.glx.corp.globant.com:8080",
+        "target": "http://ec2co-ecsel-1gppm7ze1f6y-721853610.us-east-2.elb.amazonaws.com/",
         "secure": false,
         "changeOrigin": false,
         "pathRewrite": {"^/biometrics" : ""}
