@@ -1,0 +1,104 @@
+mat-card {
+
+    &.results-card {
+        margin-top: 30px;
+        margin-bottom: 30px;
+
+        mat-card-content {
+            padding: 0 15px;
+        }
+
+        .mat-card-header .mat-card-title {
+            margin-bottom: 23px;
+        }
+    }
+
+    .card-footer {
+        margin-top: 15px;
+    }
+
+    mat-label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    mat-expansion-panel {
+        margin-bottom: 20px;
+
+        .table-section {
+            width: 100%;
+            overflow: auto;
+        }
+    }
+
+    .image-container {
+        width: 100%;
+
+        img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            object-position: left;
+        }
+    }
+
+    .buttons-container {
+        margin-bottom: 10px;
+
+        mat-form-field {
+            width: 100%;
+        }
+    }
+
+    .picture-container {
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .results-section {
+        .results-error {
+            font-size: 16px;
+            color: red;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .verification-result-item {
+            width: 100%;
+            font-weight: bold;
+            margin-bottom: 20px;
+
+            .verification-label {
+                display: inline-block;
+                width: 100%;
+                margin-bottom: 8px;
+            }
+
+            .verification-value {
+                display: inline-block;
+
+                &.verification-value-danger {
+                    color: #bf4941;
+                }
+
+                &.verification-value-warning {
+                    color: #b5a841;
+                }
+
+                &.verification-value-success {
+                    color: #4f8a45
+                }
+            }
+
+            @media only screen and (min-width: 720px) {
+                .verification-label {
+                    width: 50%;
+                }
+
+                .verification-value {
+                    width: 50%;
+                }
+            }
+        }
+    }
+}

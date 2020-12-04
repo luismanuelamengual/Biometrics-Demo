@@ -16,6 +16,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BiometricsService} from './services/biometrics.service';
 import {PassiveLivenessComponent} from './pages/passive_liveness/passive_liveness.component';
 import {ConfigurationComponent} from './pages/configuration/configuration.component';
+import {DocumentScannerComponent} from './pages/document-scanner/document-scanner.component';
 
 @NgModule({
     imports: [
@@ -31,10 +32,11 @@ import {ConfigurationComponent} from './pages/configuration/configuration.compon
     declarations: [
         AppComponent,
         IdentificationComponent,
+        DocumentScannerComponent,
         LivenessComponent,
         ConfigurationComponent,
         PassiveLivenessComponent,
-        DniPictureGetterComponent
+        DniPictureGetterComponent,
     ],
     providers: [
         BiometricsService,
