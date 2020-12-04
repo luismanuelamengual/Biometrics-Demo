@@ -65,7 +65,7 @@
     <mat-card-content>
         <div class="results-section">
             <div *ngFor="let dataItem of verificationDniResults.data.information | keyvalue" class="verification-result-item">
-                <div class="verification-label">{{ dataItem.key | titlecase }}</div>
+                <div class="verification-label">{{ formatDocumentItemKey(dataItem) }}</div>
                 <div class="verification-value verification-value-success">{{ formatDocumentItem(dataItem) }}</div>
             </div>
         </div>

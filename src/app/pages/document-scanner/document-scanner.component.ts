@@ -47,6 +47,23 @@ export class DocumentScannerComponent implements OnInit {
         }
     }
 
+    public formatDocumentItemKey(documentItem: {key: string, value: any}) {
+        const capRe = /[A-Z]/;
+        const output = [];
+        for (let i = 0, l = documentItem.key.length; i < l; i += 1) {
+            if (i === 0) {
+                output.push(documentItem.key[i].toUpperCase());
+            }
+            else {
+                if (i > 0 && capRe.test(documentItem.key[i])) {
+                    output.push(' ');
+                }
+                output.push(documentItem.key[i]);
+            }
+        }
+        return output.join('');
+    }
+
     public formatDocumentItem(documentItem: {key: string, value: any}) {
         let result = documentItem.value;
         if (documentItem.key === 'birthDate' || documentItem.key === 'expirationDate') {
