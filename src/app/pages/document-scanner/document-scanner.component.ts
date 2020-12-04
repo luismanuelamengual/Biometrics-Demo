@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {BiometricsService} from "../../services/biometrics.service";
-import {TitleCasePipe} from "@angular/common";
+import {BiometricsService} from '../../services/biometrics.service';
 
 @Component({
     selector: 'app-document-scanner',
@@ -17,7 +16,7 @@ export class DocumentScannerComponent implements OnInit {
     verifying = false;
     verificationError = null;
 
-    constructor(private biometrics: BiometricsService, public titleCasePipe: TitleCasePipe) {
+    constructor(private biometrics: BiometricsService) {
     }
 
     ngOnInit(): void {

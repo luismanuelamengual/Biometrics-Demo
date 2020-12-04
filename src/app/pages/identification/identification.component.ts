@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {TitleCasePipe} from '@angular/common';
 import {BiometricsService} from '../../services/biometrics.service';
 
 @Component({
@@ -21,7 +20,7 @@ export class IdentificationComponent implements OnInit {
     verifying = false;
     livenessType: 'passive' | 'active' = 'active';
 
-    constructor(private biometrics: BiometricsService, public titleCasePipe: TitleCasePipe) {
+    constructor(private biometrics: BiometricsService) {
     }
 
     ngOnInit(): void {
