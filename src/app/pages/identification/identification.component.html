@@ -6,14 +6,14 @@
     <mat-card-content>
         <mat-vertical-stepper>
             <mat-step label="Prueba de vida">
+                <div *ngIf="livenessPicture" class="image-container">
+                    <img [src]="livenessPicture">
+                </div>
                 <div class="buttons-container">
-                    <button mat-button mat-raised-button color="primary" *ngIf="!livenessSessionRunning" (click)="startLivenessSession()">
+                    <button mat-button mat-raised-button *ngIf="!livenessSessionRunning" (click)="startLivenessSession()">
                         <ng-container *ngIf="!livenessPicture">Realizar prueba de vida</ng-container>
                         <ng-container *ngIf="livenessPicture">Volver a realizar prueba de vida</ng-container>
                     </button>
-                </div>
-                <div *ngIf="livenessPicture" class="image-container">
-                    <img [src]="livenessPicture">
                 </div>
                 <button *ngIf="livenessSessionRunning" class="liveness-close-button" (click)="stopLivenessSession()">x</button>
                 <biometrics-liveness *ngIf="livenessSessionRunning && livenessType == 'active'" (sessionSucceded)="onLivenessCompleted($event.detail)" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness>
