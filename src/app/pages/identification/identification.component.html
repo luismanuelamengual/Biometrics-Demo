@@ -5,7 +5,7 @@
     </mat-card-header>
     <mat-card-content>
         <mat-vertical-stepper>
-            <mat-step label="Prueba de vida">
+            <mat-step label="Prueba de vida" [completed]="livenessPicture">
                 <div *ngIf="livenessPicture" class="image-container">
                     <img [src]="livenessPicture">
                 </div>
@@ -19,10 +19,10 @@
                 <biometrics-liveness *ngIf="livenessSessionRunning && livenessType == 'active'" (sessionSucceded)="onLivenessCompleted($event.detail)" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness>
                 <biometrics-liveness-passive *ngIf="livenessSessionRunning && livenessType == 'passive'" (livenessVerificationComplete)="onPassiveLivenessCompleted($event.detail)" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness-passive>
             </mat-step>
-            <mat-step label="Foto del frente documento">
+            <mat-step label="Foto del frente documento" [completed]="documentFrontPicture">
                 <app-dni-picture-getter (dniCaptured)="onDniFrontCaptured($event)"></app-dni-picture-getter>
             </mat-step>
-            <mat-step label="Foto del dorso documento">
+            <mat-step label="Foto del dorso documento" [completed]="documentBackPicture">
                 <app-dni-picture-getter (dniCaptured)="onDniBackCaptured($event)"></app-dni-picture-getter>
             </mat-step>
         </mat-vertical-stepper>
