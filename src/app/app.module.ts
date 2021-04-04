@@ -14,9 +14,9 @@ import {AppRoutingModule} from './app-routing.module';
 import {LivenessComponent} from './pages/liveness/liveness.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BiometricsService} from './services/biometrics.service';
-import {PassiveLivenessComponent} from './pages/passive_liveness/passive_liveness.component';
 import {ConfigurationComponent} from './pages/configuration/configuration.component';
 import {DocumentScannerComponent} from './pages/document-scanner/document-scanner.component';
+import {Liveness3dComponent} from './pages/liveness3d/liveness3d.component';
 
 @NgModule({
     imports: [
@@ -34,8 +34,8 @@ import {DocumentScannerComponent} from './pages/document-scanner/document-scanne
         IdentificationComponent,
         DocumentScannerComponent,
         LivenessComponent,
+        Liveness3dComponent,
         ConfigurationComponent,
-        PassiveLivenessComponent,
         DniPictureGetterComponent,
     ],
     providers: [
