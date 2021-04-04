@@ -5,7 +5,7 @@
     </mat-card-header>
     <mat-card-content>
         <button *ngIf="livenessSessionRunning" class="liveness-close-button" (click)="stopLivenessSession()">x</button>
-        <biometrics-liveness3d *ngIf="livenessSessionRunning" (sessionSucceded)="onLivenessCompleted($event.detail)" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness3d>
+        <biometrics-liveness3d *ngIf="livenessSessionRunning" [debugMode]="true" (sessionSucceded)="onLivenessCompleted($event.detail)" (sessionFailed)="onLivenessFailed($event.detail)" [serverUrl]="biometricsUrl" [apiKey]="biometricsApiKey"></biometrics-liveness3d>
         <button mat-button mat-raised-button color="primary" (click)="startLivenessSession()">Realizar prueba de vida</button>
     </mat-card-content>
 </mat-card>
@@ -18,8 +18,13 @@
         Persona viva verificada:
         <span class="liveness-verification liveness-verification-success" *ngIf="livenessVerified">VERDADERO</span>
         <span class="liveness-verification liveness-verification-fail" *ngIf="!livenessVerified">FALSO</span>
-        <div class="image-section">
+        <div *ngIf="livenessPicture" class="image-section">
             <img [src]="livenessPicture">
+        </div>
+        <div *ngIf="livenessDebugData" class="liveness-debug-data">
+            <div *ngFor="let dataItem of livenessDebugData | keyvalue" class="liveness-debug-item">
+                <b>{{ dataItem.key }}</b>: {{ dataItem.value }}
+            </div>
         </div>
     </mat-card-content>
 </mat-card>

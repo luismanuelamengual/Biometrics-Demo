@@ -15,6 +15,7 @@ export class Liveness3dComponent {
     livenessVerificationCompleted = false;
     livenessPicture = null;
     livenessVerified = false;
+    livenessDebugData = null;
 
     constructor() {
         this.biometricsUrl = environment.biometricsUrl;
@@ -25,6 +26,7 @@ export class Liveness3dComponent {
         this.livenessSessionRunning = true;
         this.livenessVerified = false;
         this.livenessPicture = null;
+        this.livenessDebugData = null;
     }
 
     public stopLivenessSession() {
@@ -35,10 +37,18 @@ export class Liveness3dComponent {
         const livenessReader = new FileReader();
         livenessReader.onloadend = () => {
             this.livenessSessionRunning = false;
-            this.livenessVerificationCompleted = true;
             this.livenessVerified = true;
             this.livenessPicture = livenessReader.result;
+            this.livenessDebugData = livenessData.debugData;
+            this.livenessVerificationCompleted = true;
         };
         livenessReader.readAsDataURL(livenessData.picture);
+    }
+
+    public async onLivenessFailed(livenessData) {
+        this.livenessSessionRunning = false;
+        this.livenessVerified = false;
+        this.livenessDebugData = livenessData.debugData;
+        this.livenessVerificationCompleted = true;
     }
 }
